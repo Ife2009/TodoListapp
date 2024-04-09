@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        padding: 20px;
+        background: linear-gradient(135deg, dimgrey, bisque);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .top-sec {
+        width: 50%;
+        height: 360px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* background-color: cadetblue; */
+    }
+
+    .head {
+        width: 80%;
+        height: 300px;
+        border: 10px solid dimgray;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text {
+        color: darkred;
+        text-transform: capitalize;
+        font-size: 70px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .note {
+        /* background-color: brown; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 250px;
+    }
+
+    .burger {
+        /* background-color: blueviolet; */
+        font-size: 20px;
+        text-transform: capitalize;
+        display: flex;
+        gap: 20px;
+        color: dimgray;
+        font-family: monospace;
+    }
+
+    .burger-img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon:hover {
+        background-color: darkred;
+
+        border-radius: 12px
+    }
+
+    .icon {
+        border: none;
+        height: 35px;
+        width: 35px;
+        background-color: transparent;
+    }
+
+    .icon-img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .search {
+        width: 80%;
+        display: flex;
+    }
+
+    .searchbar {
+        margin-top: 10px;
+        width: 85%;
+        height: 50px;
+        border: 5px solid dimgray;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        padding: 10px 10px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .add-btn {
+        background-color: white;
+        margin-top: 10px;
+        width: 15%;
+        height: 50px;
+        border: 5px solid dimgray;
+        font-family: 'Courier New', Courier, monospace;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .add-btn:hover {
+        color: white;
+        background-color: darkred;
+    }
+
+    /* .p-tag {
+        position: relative;
+    } */
+
+    /* .p-tag::before {
+        content: "";
+        background-image: url(../IMAGES/PNG/unchecked.png);
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+        background-position: center;
+        left: -29px;
+    }
+
+    .p-tag.check::before {
+        content: "";
+        background-image: url(../IMAGES/PNG/checked.png);
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+        background-position: center;
+        /* top: 2px; */
+    /* left: -29px; */
+    /* }
+
+    .check {
+        color: #555;
+        text-decoration: line-through;
+    } */
+
+    .list-container {
+        width: 80%;
+        /* height: 100px; */
+        margin-top: 20px;
+        /* background-color: chocolate; */
+    }
+
+    span {
+        margin-top: -12px;
+    }
+
+    .list-container p {
+        /* background-color: chartreuse; */
+        margin: 15px 0px;
+        position: relative;
+        color: dimgray;
+        font-weight: 16px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .list-container p.checked {
+        color: #555;
+        text-decoration: line-through;
+    }
+
+    .list-container p::before {
+        content: "";
+        background-image: url(/unchecked.png);
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+        background-position: center;
+        left: -29px;
+    }
+
+    .list-container p.checked::before {
+        content: "";
+        background-image: url(/checked.png);
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+        background-position: center;
+        left: -29px;
+    }
+
+
+    .list-container p span {
+        width: 24px;
+        height: 24px;
+        font-size: 22px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 0;
+        top: 10px;
+        line-height: 40px;
+        border-radius: 12px;
+    }
+
+    .list-container p span:hover {
+        background: #edeef0;
+        color: black;
+
+    }
+
+    /* .todo-item {
+        background-color: blue;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .todo-item span {
+        width: 20px;
+        height: 20px;
+        font-size: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .todo-item span:hover {
+        background-color: red;
+        border-radius: 12px;
+        cursor: pointer;
+    } */
+
+    /* .text-cont {
+        background-color: blue;
+        width: 50%;
+        height: 100px;
+        border-radius: 30px;
+    } */
+</style>
+
+<body>
+    <div class="container">
+        <div class="top-sec">
+            <div class="head">
+                <h1 class="text">my <span: style="color: dimgray;">todo </span> app</h1>
+                <div class="note">
+                    <div class="burger">
+                        <img class="burger-img" src="/menu-burger.svg" alt="">
+                        <h3>all notes</h3>
+                    </div>
+                    <button class="icon" type="submit">
+                        <img class="icon-img" src="/search.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="search">
+                <input class="searchbar" type="text" id="bar" name="bar" placeholder="Take down your notes">
+                <button class="add-btn" onclick="addTodo()">add</button>
+            </div>
+            <div class="list-container">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // const searchBar = document.querySelector('#bar');
+        // const listContainer = document.querySelector('.list-container');
+        // let todoItem = document.createElement('div')
+
+
+        // function addTodo() {
+        //     if (searchBar.value === '') {
+        //         return alert("you don't have any todo's!")
+        //     }
+        //     else {
+        //         todoItem.classList.add('todo-item')
+
+        //         let p = document.createElement('p')
+        //         p.classList.add('p-tag')
+        //         // p.classList.add('check')
+        //         p.innerHTML = searchBar.value
+        //         let span = document.createElement('span')
+        //         span.innerHTML = "\u00d7"
+
+        //         todoItem.appendChild(p)
+        //         todoItem.appendChild(span)
+        //         listContainer.appendChild(todoItem)
+        //     }
+        //     searchBar.value = ''
+        //     saveData()
+        // }
+
+
+        // listContainer.addEventListener('click', function (e) {
+        //     const todoItemSingle = document.querySelector('.todo-item');
+
+        //     todoItemSingle.addEventListener("click", function (e) {
+        //         console.log('checked')
+        //         if (e.target.tagName === "p") {
+
+
+        //             e.target.classList.toggle('check')
+        //             console.log('checked')
+        //             saveData()
+        //         }
+        //         else if (e.target.tagName === 'SPAN') {
+        //             // e.target.tagName === "DIV"
+        //             e.target.parentElement.remove()
+        //             saveData()
+        //         }
+
+        //     }, false)
+
+        // }, false)
+
+        // // console.log(searchBar)
+        // function saveData() {
+        //     localStorage.setItem('data', listContainer.innerHTML)
+        // }
+        // function getData() {
+        //     listContainer.innerHTML = localStorage.getItem('data')
+        // }
+        // getData()
+        let searchBar = document.querySelector("#bar")
+        let listContainer = document.querySelector('.list-container')
+
+        function addTodo() {
+            if (searchBar.value === '') {
+                alert("You have not entered any todo ")
+            }
+            else {
+
+                let p = document.createElement('p')
+                p.innerHTML = searchBar.value
+                listContainer.appendChild(p)
+                let span = document.createElement('span')
+                span.innerHTML = '\u00d7'
+                p.appendChild(span)
+            }
+            searchBar.value = ""
+            setData()
+        }
+        listContainer.addEventListener('click', function (e) {
+            if (e.target.tagName === 'P') {
+                e.target.classList.toggle('checked')
+                setData()
+            }
+            else if (e.target.tagName === "SPAN") {
+                e.target.parentElement.remove()
+                setData()
+            }
+        }, false)
+        function setData() {
+            localStorage.setItem('data', listContainer.innerHTML)
+        }
+        function getData() {
+            listContainer.innerHTML = localStorage.getItem('data')
+        }
+        getData()
+    </script>
+    <!-- $(document).ready(function(){
+    $('button').on('click',addTodo)
+    $('input[type='checkbox']').on('change', checkedTodo)
+    })
+    funtion checkedTodo(){
+    if($(this).is(':checked')){
+    $('p').css('text-decoration','line-through')
+    }
+    } -->
+    <!-- why not purt a class of checked in the p tag 
+    style the tag in the css put it in the js as input tag and have the check box come before it -->
+</body>
+
+</html>
